@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display|Roboto&display=swap');
+
+body {
+    padding: 0;
+    margin: 0;
+    line-height: normal;
+    background-color: #fff;
+}
+
+.card {
+    position: relative;
+    width: 20%;
+    background: #f0f2f4;
+    margin-bottom: 0rem;
+    margin-bottom: 20px;
+    transition: all 1s ease;
+    transition-delay: .1s;
+}
+.card:hover {
+    border: 2px solid goldenrod;
+    transition: all 1s ease;
+    transition-delay: .1s;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card .name {
+    font-weight: bolder;
+    font-size: 24px;
+}
+
+.card .price {
+    font-weight: 200;
+    font-size: 20px;
+}
+
+.food-details {
+    /* font-family: "Playfair Display", serif; */
+    font-family: "Sans-serif";
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+}
+
+.card .add-btn {
+    position: absolute;
+    width: 50%;
+    height: 10%;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid black;
+}
+
+.card .add-btn:hover {
+    border: 2px solid rgb(9, 200, 9);
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    gap: 2%;
+    justify-content: center;
+}

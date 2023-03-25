@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Lucida Handwriting:ital,wght@1,400&display=swap');
+
+body {
+    margin: 0;
+    line-height: normal;
+    overflow: hidden;
+}
+
+  .homeBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .buttons {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  .btnHome {
+    width: 150px;
+    height: 50px;
+    border-radius: 200px;
+    font-size: 1.5rem;
+    font-weight: 200;
+    background: #fff;
+    color: #821111;
+    border: none;
+    transition: all 1s ease;
+    transition-delay: 0.2s;
+    cursor: pointer;
+    right: 2rem;
+    z-index: 2;
+}
+
+.btnHome:hover{
+    background: #821111;
+    color: #fff;
+    transition: background 2s, color 2s;
+}

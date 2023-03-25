@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Lucida Handwriting:ital,wght@1,400&display=swap');
+
+body {
+    margin: 0;
+    line-height: normal;
+    overflow: hidden;
+}
+
+  .orderBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .restaurants {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-80%, -50%);
+    transition: all .5s ease;
+    width: 45%;
+    height: 45%;
+    z-index: 2;
+  }
+
+  .chickenInn:hover {
+    cursor: pointer;
+  }
+
+  .kfc:hover{
+    cursor: pointer;
+  }
+
+  .pick {
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: default;
+    position: absolute;
+    color: #000;
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .5s ease;
+    z-index: 2;
+  }

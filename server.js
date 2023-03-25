@@ -81,7 +81,7 @@ app.post("/login", (req, res) => {
       } else {
         if (bcrypt.compareSync(password, results[0].Password)) {
           req.session.user = results[0];
-          res.status(200).redirect("/homepage");
+          res.status(200).redirect("/order");
         } else {
           res.status(401).json({ message: "Username does not exist" });
         }
@@ -90,7 +90,7 @@ app.post("/login", (req, res) => {
   );
 });
 
-app.get("/homepage", checkAuthenticated, (req, res) => {
+app.get("/homepage", (req, res) => {
   res.render("homepage.ejs", {
     Name: req.session.user.Name,
   });
@@ -102,6 +102,22 @@ app.get("/login", checkNotAuthenticated, (req, res) => {
 
 app.get("/signUp", checkNotAuthenticated, (req, res) => {
   res.render("signUp.ejs");
+});
+
+app.get("/kfc", (req, res) => {
+  res.render("kfc.ejs");
+});
+
+app.get("/chickenInn", (req, res) => {
+  res.render("chickenInn.ejs");
+});
+
+app.get("/landing", (req, res) => {
+  res.render("landing2.ejs");
+});
+
+app.get("/order", (req, res) => {
+  res.render("order.ejs");
 });
 
 app.listen(3000, () => {
