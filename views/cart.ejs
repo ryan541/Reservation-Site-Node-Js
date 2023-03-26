@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+</head>
+<body>
+    <table class="pt-5" style="width: 100%">
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+        
+        <% cart.forEach(function(item) { %>
+        
+
+        <tr>
+            <td>
+                <div class="product-info">
+
+                    <img src="/images/<%= item.image %>" alt="">
+                    <div>
+                        <p><%= item.name %></p>
+
+                        <% if(item.sale_price) {%>
+                            <small><span>$</span><%= item.sale_price %></small>
+                        <% } else {%>
+                        <small><span>$</span><%= item.price %></small>
+                        <% } %>
+                        <br>
+                        <form>
+                            <input type="submit" name="remove_btn" class="remove_btn" value="remove">
+                        </form>
+                    </div>
+                </div>
+            </td>
+
+            <td>
+                <form>
+                    <input type="number" name="quantity" value="1">
+
+                    <input type="submit" value="edit" class="edit-btn" name="edit_product_quantity_btn">
+                </form>
+            </td>
+
+            <td>
+
+                <% if(item.sale_price) { %> 
+                <span class="product-price">$ <%= item.sale_price * item.quantity %></span>
+                <% } else { %>
+                <span class="product-price">$ <%= item.price * item.quantity %></span>
+                <% } %>
+            </td>
+
+        </tr>
+
+        <% }) %>
+    </table>
+
+    
+
+    <div class="cart-total">
+        <table>
+
+            <tr>
+                <td>Total</td>
+                    <td>$ <%= total %></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

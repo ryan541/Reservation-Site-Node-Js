@@ -37,6 +37,36 @@ con.connect((err) => {
   else console.log("Connected Successfully!");
 });
 
+//function tocheck if the selected product is in the cart
+function isProductInCart(cart, id) {
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].id == id) {
+      return true;
+    }
+  }
+  return false;
+}
+
+//function to calculate the product total
+function calculateTotal(cart, req) {
+  let total = 0;
+
+  for (let i = 0; i < cart.length; i++) {
+    //if we are offering a discounted price
+    let price = Number(cart[i].price);
+    let sale_price = Number(cart[i].sale_price);
+    let quantity = Number(cart[i].quantity);
+    if (cart[i].sale_price) {
+      total = total + sale_price * quantity;
+    } else {
+      total = total + price * quantity;
+    }
+  }
+  req.session.total = total;
+  return total;
+}
+
+//sign up data parser
 app.post("/signUp", async (req, res) => {
   var con = mysql.createConnection({
     host: "localhost",
@@ -61,6 +91,7 @@ app.post("/signUp", async (req, res) => {
   console.log(data);
 });
 
+//login authenticator
 app.post("/login", (req, res) => {
   var username = req.body.username;
   var password = req.body.password;
@@ -90,32 +121,114 @@ app.post("/login", (req, res) => {
   );
 });
 
+//data request for the kfc page
+app.get("/kfc", (req, res) => {
+  //connection to database
+  var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "ireserve",
+  });
+
+  con.query("SELECT * FROM kfc", (err, result) => {
+    res.render("kfc.ejs", { result: result });
+  });
+});
+
+//data request for the chickeninn page
+app.get("/chickeninn", (req, res) => {
+  //connection to database
+  var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "ireserve",
+  });
+
+  con.query("SELECT * FROM chickeninn", (err, result) => {
+    res.render("chickenInn.ejs", { result: result });
+  });
+});
+
+//data parsed from kfc or chickeninn to the cart page
+app.post("/cart", (req, res) => {
+  var id = req.body.id;
+  var name = req.body.name;
+  var price = req.body.price;
+  var sale_price = req.body.sale_price;
+  var quantity = req.body.quantity;
+  var image = req.body.image;
+  var product = {
+    id: id,
+    name: name,
+    price: price,
+    sale_price: sale_price,
+    quantity: 1,
+    image: image,
+  };
+
+  var cart = req.session.cart;
+  if (cart) {
+    if (!isProductInCart(cart, id)) {
+      cart.push(product);
+    }
+  } else {
+    req.session.cart = [product];
+    var cart = req.session.cart;
+  }
+
+  //calculate total
+  calculateTotal(cart, req);
+
+  //return to cart page
+  res.redirect("/cart");
+});
+
+//
+app.get("/cart", (req, res) => {
+  var cart = req.session.cart;
+  var total = req.session.total;
+  console.log(cart);
+  res.render("cart.ejs", {
+    cart: cart,
+    total: total,
+  });
+});
+
+//homepage rendering
 app.get("/homepage", (req, res) => {
   res.render("homepage.ejs", {
     Name: req.session.user.Name,
   });
 });
 
+//login page rendering
 app.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("login.ejs");
 });
 
+//signup page rendering
 app.get("/signUp", checkNotAuthenticated, (req, res) => {
   res.render("signUp.ejs");
 });
 
-app.get("/kfc", (req, res) => {
-  res.render("kfc.ejs");
-});
+//kfc page rendering
+// app.get("/kfc", (req, res) => {
+//   res.render("kfc.ejs");
+// });
 
-app.get("/chickenInn", (req, res) => {
-  res.render("chickenInn.ejs");
-});
+//chickeninn page rendering
+// app.get("/chickenInn", (req, res) => {
+//   res.render("chickenInn.ejs");
+// });
 
+//landing page rendering
 app.get("/landing", (req, res) => {
   res.render("landing2.ejs");
 });
 
+//ordering page rendering
 app.get("/order", (req, res) => {
   res.render("order.ejs");
 });

@@ -11,6 +11,36 @@
   <body>
     <!-- Start Chicken Section -->
     <section class="Chicken">
+      <h1>CHICKEN INN GREAT COMBO!!</h1>
+      <div class="flex">
+        <% result.forEach(function (item) { %>
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 mrgn"></div>
+        <div class="card">
+          <img src="Images/<%= item.image %>" alt="img" />
+          <div class="food-details">
+            <span><%= item.name %></span>
+            <div class="description">Description <%= item.description  %></div>
+            <div class="price">Price : <%= item.price  %></div>
+            <i><img src="images/star.png"/></i>
+            <i><img src="images/star.png"/></i>
+            <i><img src="images/star.png"/></i>
+            <i><img src="images/star.png"/></i>
+          </div>
+
+          <form action="/cart" method="post">
+            <input type="hidden" value="<%= item.id %>" class="add-btn" name="id">
+            <input type="hidden" value="<%= item.name %>" class="add-btn" name="name">
+            <input type="hidden" value="<%= item.price %>" class="add-btn" name="price">
+            <input type="hidden" value="<%= item.sale_price %>" class="add-btn" name="sale_price">
+            <input type="hidden" value="<%= item.quantity %>" class="add-btn" name="quantity">
+            <input type="hidden" value="<%= item.image %>" class="add-btn" name="image">
+            <input type="submit" value="Add to Cart" class="add-btn">
+          </form>
+          <!-- <button class="add-btn">Add to Cart</button> -->
+        </div>
+
+        <%}) %>
+    <!-- <section class="Chicken">
       <h1>CHICKEN</h1>
       <div class="flex">
         <div class="card">
@@ -53,11 +83,11 @@
           <button class="add-btn">Add to Cart</button>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- End Drinks Section -->
 
     <!-- Start Drinks Section -->
-    <section class="Drinks">
+    <!-- <section class="Drinks">
       <h1>DRINKS</h1>
       <div class="flex">
         <div class="card">
@@ -100,7 +130,7 @@
           <button class="add-btn">Add to Cart</button>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- End Drinks Section -->
   </body>
 </html>
