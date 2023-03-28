@@ -15,16 +15,18 @@
       <div class="flex">
         <% result.forEach(function (item) { %>
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 mrgn"></div>
-        <div class="card">
+        <div class="card flex1">
           <img src="Images/<%= item.image %>" alt="img" />
           <div class="food-details">
             <span><%= item.name %></span>
             <div class="description">Description <%= item.description  %></div>
             <div class="price">Price : <%= item.price  %></div>
-            <i><img src="images/star.png"/></i>
-            <i><img src="images/star.png"/></i>
-            <i><img src="images/star.png"/></i>
-            <i><img src="images/star.png"/></i>
+            <div class="stars">
+              <i><img src="images/star.png"/></i>
+              <i><img src="images/star.png"/></i>
+              <i><img src="images/star.png"/></i>
+              <i><img src="images/star.png"/></i>
+            </div>
           </div>
 
           <form action="/cart" method="post">

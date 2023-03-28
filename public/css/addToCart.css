@@ -10,25 +10,29 @@ body {
 .card {
     position: relative;
     width: 20%;
+    height: 320px;
     background: #f0f2f4;
     margin-bottom: 0rem;
     margin-bottom: 20px;
     transition: all 1s ease;
-    transition-delay: .1s;
+    /* transition-delay: .1s; */
+    /* visibility: hidden; */
 }
-.card:hover {
+/* .card:hover {
     border: 2px solid goldenrod;
     transition: all 1s ease;
     transition-delay: .1s;
-}
+} */
 
 .card img {
     width: 100%;
+    height: 55%;
+    /* visibility: hidden; */
 }
 
-.card .name {
-    font-weight: bolder;
-    font-size: 24px;
+.card .description {
+    /* visibility: hidden; */
+    font-size: 16px;
 }
 
 .card .price {
@@ -39,7 +43,7 @@ body {
 .food-details {
     /* font-family: "Playfair Display", serif; */
     font-family: "Sans-serif";
-    width: 50%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -66,6 +70,34 @@ body {
 .flex {
     display: flex;
     flex-direction: row;
-    gap: 2%;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    gap: 2%;
+    /* justify-content: center;
 }
+
+.flex1 {
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+    /* justify-content: center; */
+}
+
+/* .food-details .stars {
+    padding-top: 5px;
+    display: flex;
+    flex-direction: row;
+    /* gap: 30px; 
+    width: 100%;
+} */
+
+.food-details img {
+    width: 25px;
+    height: 25px;
+}
+
+/* .flex2 {
+    display: flex;
+    flex-direction: column;
+} */
