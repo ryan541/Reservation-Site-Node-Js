@@ -16,9 +16,9 @@ app.use(express.static(__dirname + "/public"));
 //enables ejs files to be loaded
 app.use(
   session({
-    // secret: "secret",
-    // resave: true,
-    // saveUninitialized: true,
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true,
   })
 );
 //app.use(session({ secret: "10" }));

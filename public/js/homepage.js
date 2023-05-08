@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var order = document.querySelector(".order-btn btnHome");
 
   if (order) {
-    order.addEventListener("cclick", function (e) {
+    order.addEventListener("click", function (e) {
       window.location.href = "/order";
     });
   }
